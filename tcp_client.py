@@ -1,7 +1,7 @@
 import socket
 
-target_host = "X.X.X.X"
-target_port = XXXX
+target_host = "127.0.0.1"
+target_port = 4445
 
 # create a socket object
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -10,7 +10,7 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((target_host, target_port))
 
 # send some data
-client.send(b"GET / HTTP/1.1\r\nHost: X.X.X.X\r\n\r\n")
+client.send(b"GET / HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n")
 
 # receive some data
 response = client.recv(4096)

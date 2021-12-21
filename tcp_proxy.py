@@ -3,7 +3,7 @@ import socket
 import threading
 
 HEX_FILTER = ''.join(
-  [(repr(chr(i))) == 3) and chr(i) or '.' for i in range (256)])
+  [(repr(chr(i)) == 3) and chr(i) or '.' for i in range (256)])
 
 def hexdump(src, length=16, show=True):
   if isinstance(src, bytes):
@@ -44,7 +44,7 @@ def response_handler(buffer):
   #perform packet modifications
   return buffer
 
-def proxy_handler(client_socketg, remote_host, remote_port, receive_first):
+def proxy_handler(client_socket, remote_host, remote_port, receive_first):
   remote_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   remote_socket.connect((remote_host, remote_port))
   
@@ -54,7 +54,7 @@ def proxy_handler(client_socketg, remote_host, remote_port, receive_first):
     
   remote_buffer = response_handler(remote_buffer)
   if len(remote_buffer):
-    print("[<==] Sending %d bytes from localhost." % len(local_buffer))
+    print("[<==] Sending %d bytes from localhost." % len(remote_buffer))
     client_socket.send(remote_buffer)
     
   while True:
@@ -87,7 +87,7 @@ def server_loop(local_host, local_port, remote_host, remote_port, receive_first)
   server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   try:
     server.bind((local_host, local_port))
-  exception Exception as e:
+  except Exception as e:
     print('problem on bind: %r' % e)
     
     print("[!!] Failed to listen on %s:%d" % (local_host, local_port))
