@@ -25,7 +25,7 @@ class Server (paramiko.ServerInterface):
 
 if __name__ == '__main__':
     server = '192.168.1.207'
-    SSH_PORT = 2222
+    ssh_port = 2222
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
