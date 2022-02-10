@@ -53,10 +53,10 @@ def dir_bruter(words):
 
         if r.status_code == 200:
             print(f'\nSuccess ({r.status_code}: {url})')
-        elif r.status_code == 404:
-            sys.stderr.write('.');sys.stderr.flush()
-        else:
-            print(f'{r.status_code} => {url}')
+#        elif r.status_code == 404:
+#            sys.stderr.write('.');sys.stderr.flush()
+#        else:
+#            print(f'{r.status_code} => {url}')
 
 if __name__ == '__main__':
     words = get_words()
