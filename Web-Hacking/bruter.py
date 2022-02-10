@@ -1,5 +1,6 @@
 ### usage: python3 bruter.py [https://[target].rootpage-to-be-dirbed.com] [wordlist-location]
 
+from contextlib import nullcontext
 from pickle import FALSE
 import queue
 import requests
@@ -63,5 +64,8 @@ if __name__ == '__main__':
     sys.stdin.readline()
     for _ in range(THREADS):
         t= threading.Thread(target=dir_bruter, args=(words,))
-        t.start()
+        try:
+            t.start()
+        except KeyboardInterrupt:
+                sys.exit()
 
