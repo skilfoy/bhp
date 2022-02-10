@@ -1,0 +1,7 @@
+scapy
+lxml
+beautifulsoup4
+requests
+urllib
+paramiko
+hashcrack
